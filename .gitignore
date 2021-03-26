@@ -17,7 +17,6 @@ target/
 
 ### NetBeans ###
 nbproject/private/
-build/
 nbbuild/
 dist/
 nbdist/
@@ -27,5 +26,5 @@ nbdist/
 ### VS Code ###
 .vscode/
 
-jodconverter-web/src/main/cache/
-jodconverter-web/src/main/file/
+server/src/main/cache/
+server/src/main/file/

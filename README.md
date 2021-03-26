@@ -2,14 +2,14 @@
 此项目为文件文档在线预览项目解决方案，对标业内付费产品有【[永中office](http://dcs.yozosoft.com/)】【[office365](http://www.officeweb365.com/)】【[idocv](https://www.idocv.com/)】等，在取得公司高层同意后以Apache协议开源出来反哺社区，在此特别感谢@唐老大的支持以及@端木详笑的贡献。该项目使用流行的spring boot搭建，易上手和部署，基本支持主流办公文档的在线预览，如doc,docx,Excel,pdf,txt,zip,rar,图片等等
 ### 项目特性
 
-1. 支持office，pdf, cad等办公文档
-1. 支持txt,java,php,py,md,js,css等所有纯文本
-1. 支持zip,rar,jar,tar,gzip等压缩包
-1. 支持jpg，jpeg，png，gif等图片预览（翻转，缩放，镜像）
-1. 使用spring boot开发，预览服务搭建部署非常简便
-1. rest接口提供服务，跨平台特性(java,php,python,go,php，....)都支持，应用接入简单方便
+1. 支持 office, pdf, cad 等办公文档
+1. 支持 txt, xml(渲染), md(渲染), java, php, py, js, css 等所有纯文本
+1. 支持 zip, rar, jar, tar, gzip 等压缩包
+1. 支持 jpg, jpeg, png, gif, tif, tiff 等图片预览（翻转，缩放，镜像）
+1. 使用 spring-boot 开发，预览服务搭建部署非常简便
+1. rest 接口提供服务，跨语言、跨平台特性(java,php,python,go,php，....)都支持，应用接入简单方便
 1. 抽象预览服务接口，方便二次开发，非常方便添加其他类型文件预览支持
-1. 最最重要Apache协议开源，代码pull下来想干嘛就干嘛
+1. 最最重要 Apache 协议开源，代码 pull 下来想干嘛就干嘛
 
 ### 官网及文档
 
@@ -26,10 +26,11 @@
 1. English document：https://gitee.com/kekingcn/file-online-preview/blob/master/README.en.md
 
 ### 联系我们，加入组织
-> 我们会用心回答解决大家在项目使用中的问题，也请大家在提问前至少Google或baidu过，珍爱生命远离无效的交流沟通
+> 我们会用心回答解决大家在项目使用中的问题，也请大家在提问前至少 Google 或 baidu 过，珍爱生命远离无效的交流沟通
 
-![输入图片说明](https://gitee.com/uploads/images/2017/1219/173717_934cb068_492218.png "屏幕截图.png")
-QQ群号：613025121
+![](./doc/KK开源技术交流2群群聊二维码.png) 
+
+QQ群号：~~613025121(已满)~~  2群：484680571
 
 ### 文档预览效果
 #### 1. 文本预览
@@ -98,15 +99,59 @@ pdf预览模式预览效果如下
 - jodconverter
 > 依赖外部环境
 - redis (可选，默认不用)
-- OpenOffice或者LibreOffice(Windows下已内置，Linux会自动安装，Mac OS下需要手动安装)
+- OpenOffice 或者 LibreOffice( Windows 下已内置，Linux 脚本启动模式会自动安装，Mac OS 下需要手动安装)
 
-1. 第一步：pull项目https://github.com/kekingcn/file-online-preview.git
+1. 第一步：pull 项目 https://github.com/kekingcn/file-online-preview.git
 
-3. 第二步：运行FilePreviewApplication的main方法，服务启动后，访问http://localhost:8012/
+3. 第二步：运行 ServerMain 的 main 方法，服务启动后，访问 http://localhost:8012/
 会看到如下界面，代表服务启动成功
+   
 ![输入图片说明](https://gitee.com/uploads/images/2017/1213/100221_ea15202e_492218.png "屏幕截图.png")
 
 ### 历史更新记录
+
+> 2021年1月28日 ：
+
+2020农历年最后一个版本发布，主要包含了部分 UI 改进，和解决了 QQ 群友、 Issue 里反馈的 Bug 修复，最最重要的是发个新版，过个好年
+
+1. 引入galimatias,解决不规范文件名导致文件下载异常
+2. 更新index接入演示界面UI风格
+3. 更新markdown文件预览UI风格
+4. 更新XML文件预览UI风格，调整类文本预览架构，更方便扩展
+5. 更新simTxT文件预览UI风格
+6. 调整多图连续预览上下翻图的UI
+7. 采用apache-common-io包简化所有的文件下载io操作
+8. XML文件预览支持切换纯文本模式
+9. 增强url base64解码失败时的提示信息
+10. 修复导包错误以及图片预览 bug
+11. 修复发行包运行时找不到日志目录的问题
+12. 修复压缩包内多图连续预览的bug
+13. 修复大小写文件类型后缀没通用匹配的问题
+14. 指定Base64转码采用Apache Commons-code中的实现，修复base64部分jdk版本下出现的异常
+15. 修复类文本类型HTML文件预览的bug
+16. 修复：dwg文件预览时无法在jpg和pdf两种类型之间切换
+17. escaping of dangerous characters to prevent reflected xss
+18. 修复重复编码导致文档转图片预览失败的问题&编码规范
+
+> 2020年12月27日 ：
+
+2020年年终大版本更新，架构全面设计，代码全面重构，代码质量全面提升，二次开发更便捷，欢迎拉源码品鉴，提issue、pr共同建设
+
+1. 架构模块调整,大量的代码重构，代码质量提升N个等级，欢迎品鉴
+2. 增强XML文件预览效果，新增XML文档数结构预览
+3. 新增markdown文件预览支持，预览支持md渲染和源文本切换支持
+4. 切换底层web server为jetty，解决这个issue：https://github.com/kekingcn/kkFileView/issues/168
+5. 引入cpdetector，解决文件编码识别问题
+6. url采用base64+urlencode双编码，彻底解决各种奇葩文件名预览问题
+7. 新增配置项office.preview.switch.disabled，控制offic文件预览切换开关
+8. 优化文本类型文件预览逻辑，采用Base64传输内容，避免预览时再次请求文件内容
+9. office预览图片模式禁用图片放大效果，达到图片和pdf预览效果一致的体验
+10. 直接代码静态设置pdfbox兼容低版本jdk，在IDEA中运行也不会有警告提示 
+11. 移除guava、hutool等非必须的工具包，减少代码体积
+12. Office组件加载异步化，提速应用启动速度最快到5秒内
+13. 合理设置预览消费队列的线程数
+14. 修复压缩包里文件再次预览失败的bug
+15. 修复图片预览的bug
 
 > 2020年05月20日 ：
 1. 新增支持全局水印，并支持通过参数动态改变水印内容
@@ -162,5 +207,13 @@ pdf预览模式预览效果如下
 1. 引入pdf.js预览doc等文件，支持doc标题生成pdf预览菜单，支持手机端预览
 
 ### 使用登记
-如果这个项目解决了你的实际问题，可在https://gitee.com/kekingcn/file-online-preview/issues/IGSBV
+如果这个项目解决了你的实际问题，可在 https://gitee.com/kekingcn/file-online-preview/issues/IGSBV
 登记下，如果节省了你的三方预览服务费用，也愿意支持下的话，可点击下方【捐助】请作者喝杯咖啡，也是非常感谢
+
+### Stars 趋势图
+#### Gitee
+[![Stargazers over time](https://whnb.wang/img/kekingcn/file-online-preview)](https://whnb.wang/kekingcn/file-online-preview?e=86400)
+
+#### GitHub
+
+[![Stargazers over time](https://starchart.cc/kekingcn/kkFileView.svg)](https://starchart.cc/kekingcn/kkFileView)
