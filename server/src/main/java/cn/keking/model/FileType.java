@@ -23,16 +23,19 @@ public enum FileType {
     XML("xmlFilePreviewImpl"),
     FLV("flvFilePreviewImpl"),
     CAD("cadFilePreviewImpl"),
-    TIFF("tiffFilePreviewImpl");
+    TIFF("tiffFilePreviewImpl"),
+    OFD("ofdFilePreviewImpl");
 
 
     private static final String[] OFFICE_TYPES = {"docx", "wps", "doc", "xls", "xlsx", "ppt", "pptx"};
     private static final String[] PICTURE_TYPES = {"jpg", "jpeg", "png", "gif", "bmp", "ico", "raw"};
     private static final String[] ARCHIVE_TYPES = {"rar", "zip", "jar", "7-zip", "tar", "gzip", "7z"};
     private static final String[] TIFF_TYPES = {"tif", "tiff"};
+    private static final String[] OFD_TYPES = {"ofd"};
     private static final String[] SSIM_TEXT_TYPES = ConfigConstants.getSimText();
-    private static final String[] CODES = {"java", "c", "php", "go", "python", "py", "js", "html", "ftl", "css", "lua", "sh", "rb", "yml", "json", "h", "cpp", "cs", "aspx", "jsp"};
+    private static final String[] CODES = {"java", "c", "php", "go", "python", "py", "js", "html", "ftl", "css", "lua", "sh", "rb", "yaml", "yml", "json", "h", "cpp", "cs", "aspx", "jsp"};
     private static final String[] MEDIA_TYPES = ConfigConstants.getMedia();
+    public static final String[] MEDIA_TYPES_CONVERT = ConfigConstants.getConvertMedias();
     private static final Map<String, FileType> FILE_TYPE_MAPPER = new HashMap<>();
 
     static {
@@ -51,11 +54,17 @@ public enum FileType {
         for (String media : MEDIA_TYPES) {
             FILE_TYPE_MAPPER.put(media, FileType.MEDIA);
         }
+        for (String media : MEDIA_TYPES_CONVERT) {
+            FILE_TYPE_MAPPER.put(media, FileType.MEDIA);
+        }
         for (String tif : TIFF_TYPES) {
             FILE_TYPE_MAPPER.put(tif, FileType.TIFF);
         }
         for (String code : CODES) {
             FILE_TYPE_MAPPER.put(code, FileType.CODE);
+        }
+        for (String ofd : OFD_TYPES) {
+            FILE_TYPE_MAPPER.put(ofd, FileType.OFD);
         }
         FILE_TYPE_MAPPER.put("md", FileType.MARKDOWN);
         FILE_TYPE_MAPPER.put("xml", FileType.XML);
